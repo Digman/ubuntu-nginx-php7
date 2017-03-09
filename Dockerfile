@@ -17,9 +17,10 @@ RUN mkdir -p $WORK_DIR
 
 #update and add new sources
 ADD sources.list /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get -y upgrade
 RUN apt-get update --fix-missing
-RUN apt-get install -y software-properties-common 
-RUN apt-get remove -y vim-common
+RUN apt-get install -y software-properties-common
 RUN apt-get install -y vim 
 RUN apt-get install -y curl
 RUN apt-get install -y wget
@@ -28,8 +29,8 @@ RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
 
 #install php7
-RUN apt-get install -y --force-yes php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl
-RUN apt-get install -y --force-yes php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt
+RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-dev php7.1-mysql php7.1-curl
+RUN apt-get install -y -f php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt
 
 #install nginx
 RUN apt-get install -y nginx
