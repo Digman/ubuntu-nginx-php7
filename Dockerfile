@@ -33,7 +33,7 @@ RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-dev php7.1-mysql php7.1-c
 RUN apt-get install -y -f php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt
 
 #install nginx
-RUN apt-get install -y nginx
+RUN apt-get install -y --allow-unauthenticated nginx
 
 WORKDIR $WORK_DIR
 
