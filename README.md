@@ -5,5 +5,5 @@ You can build this yourself after cloning the project (assuming you have [Docker
     
     $ git clone https://github.com/Digman/ubuntu-nginx-php7.git
     $ cd docker-nginx-php7
-    $ sh run.sh
+    $ sh run.sh {local_www_root} {local_web_port}
 
