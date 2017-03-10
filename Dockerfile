@@ -27,7 +27,7 @@ RUN apt-get install -y curl
 RUN apt-get install -y wget
 
 #install php7
-RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl
+RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-dev
 RUN apt-get install -y -f php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt
 
 RUN sed -i "s/;date.timezone =.*/date.timezone = PRC/" /etc/php/7.1/fpm/php.ini
