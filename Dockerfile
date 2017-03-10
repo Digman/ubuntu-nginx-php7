@@ -3,29 +3,28 @@ MAINTAINER Digman <long2513@gmail.com>
 
 CMD ["/sbin/my_init"]
 
-#languages and ENVs
-RUN locale-gen en_US.UTF-8
-RUN locale-gen zh_CN.UTF-8
+#ENVs
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV WORK_DIR /var/www
 ENV TIME_ZONE Asia/Shanghai
+
+#languages
+RUN locale-gen en_US.UTF-8
+RUN locale-gen zh_CN.UTF-8
 
 #timezone
 RUN cp /usr/share/zoneinfo/$TIME_ZONE /etc/localtime
 
 #update and add new sources
 ADD build/sources.list /etc/apt/sources.list
+RUN add-apt-repository -y ppa:ondrej/php
+RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
-#RUN apt-get -y upgrade
-#RUN apt-get update --fix-missing
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y vim 
 RUN apt-get install -y curl
 RUN apt-get install -y wget
-RUN add-apt-repository -y ppa:ondrej/php
-RUN add-apt-repository -y ppa:nginx/stable
-RUN apt-get update
 
 #install php7
 RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl
