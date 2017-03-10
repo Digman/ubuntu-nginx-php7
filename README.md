@@ -3,7 +3,7 @@ Docker: Ubuntu, Nginx and PHP 7, based on [phusion/baseimage-docker](https://git
 ### Build & Run
 You can build this yourself after cloning the project (assuming you have [Docker](https://www.docker.com/get-docker) installed).
     
-    $ git clone https://github.com/ttaranto/docker-nginx-php7.git
+    $ git clone https://github.com/Digman/ubuntu-nginx-php7.git
     $ cd docker-nginx-php7
     $ sh run.sh
 
