@@ -11,4 +11,4 @@ You can build this yourself after cloning the project:
 Or get image from daocloud.io:
     
     $ docker pull daocloud.io/digman/ubuntu-nginx-php7:latest
-    $ docker run -d -P -p 8080:80 --name php7 digman/ubuntu-nginx-php7
+    $ docker run -d -P -p 8080:80 --name php7 daocloud.io/digman/ubuntu-nginx-php7
