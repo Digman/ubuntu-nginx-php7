@@ -3,9 +3,9 @@ Docker: Ubuntu, Nginx and PHP 7, based on [phusion/baseimage-docker](https://git
 ### Build & Run
 Assuming you have [Docker](https://www.docker.com/get-docker)，
 You can build this yourself after cloning the project:
-    
+
     $ git clone https://github.com/Digman/ubuntu-nginx-php7.git
-    $ cd ubuntu-nginx-php7
+    $ cd ubuntu-nginx-php7
     $ sh run.sh {local_www_root} {local_web_port}
 
 Or get image from daocloud.io:
