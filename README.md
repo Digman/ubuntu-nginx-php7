@@ -5,7 +5,7 @@ Assuming you have [Docker](https://www.docker.com/get-docker)，
 You can build this yourself after cloning the project:
     
     $ git clone https://github.com/Digman/ubuntu-nginx-php7.git
-    $ cd docker-nginx-php7
+    $ cd ubuntu-nginx-php7
     $ sh run.sh {local_www_root} {local_web_port}
 
 Or get image from daocloud.io:
