@@ -27,7 +27,8 @@ server {
     # pass the PHP scripts to php7-fpm
     location ~ \.php$ {
         # With php7.1-fpm:
-        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+        #fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+        fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
         include fastcgi_params;
         include fastcgi.conf;

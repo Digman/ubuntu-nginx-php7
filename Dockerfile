@@ -37,6 +37,8 @@ RUN sed -i 's/max_execution_time\ =\ 30/max_execution_time\ =\ 3600/g' /etc/php/
 RUN sed -i 's/\;error_log\ =\ syslog/error_log\ =\ syslog/g' /etc/php/7.1/fpm/php.ini
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.1/fpm/php-fpm.conf
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php/7.1/fpm/php.ini
+RUN sed -i "s/listen\ =\ \/run\/php\/php7.1-fpm.sock/;listen\ =\ \/run\/php\/php7.1-fpm.sock\nlisten\ =\ 9000/" \
+/etc/php/7.1/fpm/pool.d/www.conf
 
 #install composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
@@ -60,5 +62,6 @@ ADD build/index.php $WORK_DIR
 WORKDIR $WORK_DIR
 
 EXPOSE 80 9000
+VOLUME ["$WORK_DIR","/etc/nginx"]
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
