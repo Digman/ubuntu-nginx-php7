@@ -1,0 +1,17 @@
+php7:
+  #build: .
+  image: daocloud.io/digman/ubuntu-nginx-php7
+  ports:
+      - "8000:80"
+  volumes:
+      - /var/www
+  links:
+      - mysql
+mysql:
+  image: mariadb
+  ports:
+      - "9527:3306"
+  volumes:
+      - /var/lib/mysql
+  environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
