@@ -20,14 +20,13 @@ RUN cp /usr/share/zoneinfo/$TIME_ZONE /etc/localtime
 ADD build/sources.list /etc/apt/sources.list
 RUN add-apt-repository -y ppa:ondrej/php
 RUN add-apt-repository -y ppa:nginx/stable
+RUN add-apt-repository -y ppa:git-core/ppa
 RUN apt-get update
 RUN apt-get install -y software-properties-common
-RUN apt-get install -y vim 
-RUN apt-get install -y curl
-RUN apt-get install -y wget
+RUN apt-get install -y vim curl wget zip git
 
 #install php7
-RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-dev
+RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl
 RUN apt-get install -y -f php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt
 
 RUN sed -i "s/;date.timezone =.*/date.timezone = PRC/" /etc/php/7.1/fpm/php.ini
@@ -38,6 +37,10 @@ RUN sed -i 's/max_execution_time\ =\ 30/max_execution_time\ =\ 3600/g' /etc/php/
 RUN sed -i 's/\;error_log\ =\ syslog/error_log\ =\ syslog/g' /etc/php/7.1/fpm/php.ini
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.1/fpm/php-fpm.conf
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php/7.1/fpm/php.ini
+
+#install composer
+RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 #install nginx
 RUN apt-get install -y --allow-unauthenticated nginx
