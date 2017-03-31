@@ -14,7 +14,7 @@ RUN locale-gen en_US.UTF-8
 RUN locale-gen zh_CN.UTF-8
 
 #timezone
-RUN cp /usr/share/zoneinfo/$TIME_ZONE /etc/localtime
+RUN cp /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
 #update and add new sources
 ADD build/sources.list /etc/apt/sources.list
