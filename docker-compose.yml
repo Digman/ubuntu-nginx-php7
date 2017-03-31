@@ -1,6 +1,7 @@
 php7:
   #build: .
   image: daocloud.io/digman/ubuntu-nginx-php7
+  hostname: php7
   ports:
       - "8000:80"
   volumes:
@@ -10,6 +11,7 @@ php7:
   #dns: 8.8.8.8
 mysql:
   image: mariadb
+  hostname: mysql
   ports:
       - "9527:3306"
   volumes:
