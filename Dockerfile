@@ -17,16 +17,17 @@ RUN locale-gen zh_CN.UTF-8
 RUN cp /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
 #update and add new sources
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup
 ADD build/sources.list /etc/apt/sources.list
 RUN add-apt-repository -y ppa:ondrej/php
 RUN add-apt-repository -y ppa:nginx/stable
 RUN add-apt-repository -y ppa:git-core/ppa
 RUN apt-get update
 RUN apt-get install -y software-properties-common
-RUN apt-get install -y vim curl wget zip git
+RUN apt-get install -y vim curl wget zip git sudo
 
 #install php7
-RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-mbstring
+RUN apt-get install -y -f php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-mbstring php7.1-xml
 RUN apt-get install -y -f php7.1-redis php7.1-memcached php7.1-gd php7.1-mcrypt php7.1-dev
 
 RUN sed -i "s/;date.timezone =.*/date.timezone = PRC/" /etc/php/7.1/fpm/php.ini
