@@ -50,6 +50,7 @@ RUN apt-get install -y --allow-unauthenticated nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 ADD build/default   /etc/nginx/sites-enabled/default
+ADD build/cors.conf /etc/nginx/cors.conf
 RUN mkdir           /etc/service/nginx
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run

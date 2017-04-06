@@ -11,6 +11,7 @@ server {
     error_log  /var/log/nginx/localhost.com-error.log error;
 
     charset utf-8;
+    include cors.conf;
 
     #disable checking of client request body size
     client_max_body_size 20;
